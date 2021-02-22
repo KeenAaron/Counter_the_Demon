@@ -5,10 +5,6 @@ public class Berserker : Log
 {
     // Start is called before the first frame update
     public bool berserker;
-    public int cpBaseAttack;
-    public float cpMoveSpeed;
-    public int bkBaseAttack;
-    public float bkMoveSpeed;
     public Stats playerStats;
     public float timer;
 
@@ -20,10 +16,7 @@ public class Berserker : Log
         //video 18
         target = GameObject.FindWithTag("Player").transform;
         berserker = false;
-        cpBaseAttack = baseAttack;
-        cpMoveSpeed = moveSpeed;
-        bkBaseAttack = baseAttack * 2;
-        bkMoveSpeed = moveSpeed * 2;
+
     }
 
     void Update()
