@@ -8,6 +8,7 @@ public class Invisible : Log
     public Stats playerStats;
 
     void Update()
+    
     {
         if (invisible) 
         {
@@ -17,6 +18,7 @@ public class Invisible : Log
             StartCoroutine(Visble());
         }
     }
+
     IEnumerator Invisble()
     {
         yield return new WaitForSeconds(10);
