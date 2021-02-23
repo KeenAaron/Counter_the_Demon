@@ -8,7 +8,9 @@ public enum PlayerState
     walk,
     attack,
     push,
-    interact
+    interact,
+    stagger,
+    idle
 }
 
 
@@ -22,11 +24,14 @@ public class PlayerMovment : MonoBehaviour
     private float habilityTimer;
     private bool useHability = true;
     public FloatValue currentHealth;
-    //public Signal playerHealthSignal;
+
+    public SignalSender playerHealthSignal;
+
     public GameObject projectile;
     public GameObject invocation;
     public GameObject shield;
     public GameObject electric;
+
 
     private CircleCollider2D pushCollider;
 
@@ -56,9 +61,10 @@ public class PlayerMovment : MonoBehaviour
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
+
         if (Input.GetButtonDown("attack"))
         {
-            if (currentState != PlayerState.attack && currentState != PlayerState.push)
+            if (currentState != PlayerState.attack && currentState != PlayerState.push && currentState != PlayerState.stagger)
             {
                 StartCoroutine(AttackCo());
             }
@@ -223,5 +229,29 @@ public class PlayerMovment : MonoBehaviour
     public void increaseSpeed()
     {
         speed += 2;
+    }
+
+    public void Knock(float moveTime, float damage)
+    {
+        currentHealth.initialValue -= damage;
+
+        if (currentHealth.initialValue > 0)
+        {
+            playerHealthSignal.Raise();
+            StartCoroutine(KnockCo(moveTime, damage));
+        }
+        
+    }
+
+    public IEnumerator KnockCo(float moveTime, float damage)
+    {
+        if(myRigidbody != null)
+        {
+            yield return new WaitForSeconds(moveTime);
+            myRigidbody.velocity = Vector2.zero;
+            currentState = PlayerState.idle;
+            myRigidbody.velocity = Vector2.zero;
+            this.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        }
     }
 }
