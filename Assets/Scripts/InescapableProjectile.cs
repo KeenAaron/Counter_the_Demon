@@ -26,6 +26,7 @@ public class InescapableProjectile : MonoBehaviour
     {
         if (other.gameObject.CompareTag("shield") || other.gameObject.CompareTag("Player"))
         {
+            
             Destroy(this.gameObject);
         }
 

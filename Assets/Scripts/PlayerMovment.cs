@@ -240,7 +240,6 @@ public class PlayerMovment : MonoBehaviour
             playerHealthSignal.Raise();
             StartCoroutine(KnockCo(moveTime, damage));
         }
-        
     }
 
     public IEnumerator KnockCo(float moveTime, float damage)

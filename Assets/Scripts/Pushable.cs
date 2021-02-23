@@ -29,11 +29,23 @@ public class Pushable : MonoBehaviour
                     pushable.GetComponent<Enemy>().currentState = EnemyState.stagger;
                 }
                 
+
                 StartCoroutine(PushCo(pushable));      
             }
         }
 
-        if (other.CompareTag("Player")) {
+        /*if (other.CompareTag("Player")) {
+            Rigidbody2D pushable = GetComponent<Rigidbody2D>();
+            if (other.GetComponent<PlayerMovment>().currentState != PlayerState.stagger)
+            {
+                pushable.GetComponent<PlayerMovment>().currentState = PlayerState.stagger;
+                other.GetComponent<PlayerMovment>().KnockCo(moveTime);
+            }
+        }*/
+
+       
+        if (other.CompareTag("Player"))
+        {
 
             Rigidbody2D pushable = other.GetComponent<Rigidbody2D>();
             Rigidbody2D push = this.GetComponent<Rigidbody2D>();
@@ -43,10 +55,10 @@ public class Pushable : MonoBehaviour
                 if (pushable != null)
                 {
                     pushable.isKinematic = false;
-                    Vector2 difference =  pushable.transform.position - push.transform.position;
+                    Vector2 difference = pushable.transform.position - push.transform.position;
                     difference = difference.normalized * hit;
                     pushable.AddForce(difference, ForceMode2D.Impulse);
-                    
+
                     push.GetComponent<Enemy>().currentState = EnemyState.stagger;
                     pushable.GetComponent<PlayerMovment>().currentState = PlayerState.stagger;
                     other.GetComponent<PlayerMovment>().KnockCo(moveTime, damage);
