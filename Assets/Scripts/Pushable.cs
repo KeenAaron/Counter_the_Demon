@@ -12,7 +12,6 @@ public class Pushable : MonoBehaviour
    
     private void OnTriggerEnter2D(Collider2D other)
     {
-        /*
         if(other.gameObject.CompareTag("push"))
         {
             CircleCollider2D push = other.GetComponent<CircleCollider2D>();
@@ -32,7 +31,7 @@ public class Pushable : MonoBehaviour
                 
                 StartCoroutine(PushCo(pushable));      
             }
-        }*/
+        }
 
         if (other.CompareTag("Player")) {
 
@@ -47,11 +46,13 @@ public class Pushable : MonoBehaviour
                     Vector2 difference =  pushable.transform.position - push.transform.position;
                     difference = difference.normalized * hit;
                     pushable.AddForce(difference, ForceMode2D.Impulse);
-
+                    
+                    push.GetComponent<Enemy>().currentState = EnemyState.stagger;
                     pushable.GetComponent<PlayerMovment>().currentState = PlayerState.stagger;
                     other.GetComponent<PlayerMovment>().KnockCo(moveTime, damage);
 
                     StartCoroutine(PushCo(pushable));
+                    StartCoroutine(PushCo(push));
                 }
             }
         }
