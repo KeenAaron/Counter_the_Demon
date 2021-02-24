@@ -263,6 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eb7b14862eb6844181f7c0bbeadca6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recover: {fileID: 3110032262945335822, guid: 2b9f6e767e968b6418020821f077bab9, type: 3}
 --- !u!1 &422192596
 GameObject:
   m_ObjectHideFlags: 0
@@ -2593,7 +2594,7 @@ GameObject:
   - component: {fileID: 961604465}
   m_Layer: 0
   m_Name: StatsPersonaje
-  m_TagString: Untagged
+  m_TagString: stats
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2673,7 +2674,7 @@ MonoBehaviour:
   moveSpeed: 1.5
   target: {fileID: 0}
   chaseRadius: 4
-  attackRadius: 2
+  attackRadius: 1
   homePosition: {fileID: 0}
   anim: {fileID: 0}
   timer: 1

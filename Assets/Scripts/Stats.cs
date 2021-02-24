@@ -24,4 +24,11 @@ public class Stats : MonoBehaviour
         heart.InitHearts();
         heart.UpdateHearts();
     }
+
+    public void recoverHealth()
+    {
+        player.currentHealth.recoverPlayerHealth();
+        heart.InitHearts();
+        heart.UpdateHearts();
+    }
 }

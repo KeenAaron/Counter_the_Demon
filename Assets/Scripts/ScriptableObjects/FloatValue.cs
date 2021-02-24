@@ -21,8 +21,8 @@ public class FloatValue : ScriptableObject, ISerializationCallbackReceiver
 
     public void OnAfterDeserialize()
     {
-        RuntimeValue = initialValue;
-        maxHearths = initialValue;
+        this.RuntimeValue = this.initialValue;
+        this.maxHearths = this.initialValue;
     }
 
     public void setHeartContainer()
@@ -31,7 +31,7 @@ public class FloatValue : ScriptableObject, ISerializationCallbackReceiver
         ++this.maxHearths;
 
         //this.RuntimeValue = this.RuntimeValue + (this.maxValue - this.initialValue);
-        this.RuntimeValue = maxHearths;
+        this.RuntimeValue = this.maxHearths;
     }
 
     public void setPlayerHealth()
@@ -40,6 +40,13 @@ public class FloatValue : ScriptableObject, ISerializationCallbackReceiver
         //this.initialValue += 2;
         //this.RuntimeValue = this.RuntimeValue + (this.maxValue - this.initialValue); 
 
-        this.RuntimeValue = maxHearths;
+        this.RuntimeValue = this.maxHearths;
+    }
+
+    public void recoverPlayerHealth()
+    {
+        if (this.RuntimeValue < this.maxHearths) {
+            ++this.RuntimeValue;
+        }
     }
 }

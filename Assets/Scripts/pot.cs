@@ -6,6 +6,7 @@ public class pot : MonoBehaviour
 {
 
     private Animator anim;
+    public GameObject recover;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class pot : MonoBehaviour
     IEnumerator breakCo()
     {
         yield return new WaitForSeconds(.3f);
+        RecoverHealth invoc = Instantiate(recover, transform.position, Quaternion.identity).GetComponent<RecoverHealth>();
         this.gameObject.SetActive(false);
     }
 }
