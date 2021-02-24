@@ -24,6 +24,7 @@ public class PlayerMovment : MonoBehaviour
     private float habilityTimer;
     private bool useHability = true;
     public FloatValue currentHealth;
+    public FloatValue hearthContainers;
 
     public SignalSender playerHealthSignal;
 
@@ -233,12 +234,14 @@ public class PlayerMovment : MonoBehaviour
 
     public void Knock(float moveTime, float damage)
     {
-        currentHealth.initialValue -= damage;
+        currentHealth.RuntimeValue -= damage;
 
-        if (currentHealth.initialValue > 0)
+        if (currentHealth.RuntimeValue > 0)
         {
             playerHealthSignal.Raise();
             StartCoroutine(KnockCo(moveTime, damage));
+        } else {
+            this.gameObject.SetActive(false);
         }
     }
 
@@ -250,7 +253,6 @@ public class PlayerMovment : MonoBehaviour
             myRigidbody.velocity = Vector2.zero;
             currentState = PlayerState.idle;
             myRigidbody.velocity = Vector2.zero;
-            this.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         }
     }
 }

@@ -8,7 +8,8 @@ public class Stats : MonoBehaviour
     public PlayerHit hitLeft;
     public PlayerHit hitRight;
     public PlayerHit hitDown;
-    public PlayerMovment playerSpeed;
+    public PlayerMovment player;
+    public HeartManager heart;
 
 
     public void increaseStats()
@@ -17,6 +18,10 @@ public class Stats : MonoBehaviour
         hitLeft.increaseDamage();
         hitRight.increaseDamage();
         hitDown.increaseDamage();
-        playerSpeed.increaseSpeed();
+        player.increaseSpeed();
+        player.hearthContainers.setHeartContainer();
+        player.currentHealth.setPlayerHealth();
+        heart.InitHearts();
+        heart.UpdateHearts();
     }
 }

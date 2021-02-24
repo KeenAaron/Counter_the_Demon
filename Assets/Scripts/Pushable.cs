@@ -61,7 +61,7 @@ public class Pushable : MonoBehaviour
 
                     push.GetComponent<Enemy>().currentState = EnemyState.stagger;
                     pushable.GetComponent<PlayerMovment>().currentState = PlayerState.stagger;
-                    other.GetComponent<PlayerMovment>().KnockCo(moveTime, damage);
+                    other.GetComponent<PlayerMovment>().Knock(moveTime, damage);
 
                     StartCoroutine(PushCo(pushable));
                     StartCoroutine(PushCo(push));

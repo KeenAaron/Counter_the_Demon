@@ -12,7 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: HealthSignal
   m_EditorClassIdentifier: Assembly-CSharp::SignalSender
-  listeners:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  listeners: []
