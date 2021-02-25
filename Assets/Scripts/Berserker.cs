@@ -7,9 +7,11 @@ public class Berserker : Log
     public bool berserker;
     public Stats playerStats;
     public float timer;
+    public SpriteRenderer spriteRenderer;
 
     protected override void Start()
     {
+        spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
         currentState = EnemyState.idle;
         myRigidbody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -45,11 +47,13 @@ public class Berserker : Log
     {
         if (berserker)
         {
+            spriteRenderer.color = new Color(1f, 0f, 0f, 1f);
             baseAttack = 2;
             moveSpeed = 3;
         }
         else
         {
+            spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
             baseAttack = 1;
             moveSpeed = 1.5f;
         }

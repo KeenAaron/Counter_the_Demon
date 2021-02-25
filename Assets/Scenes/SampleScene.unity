@@ -19749,6 +19749,7 @@ MonoBehaviour:
   berserker: 0
   playerStats: {fileID: 961604465}
   timer: 0
+  spriteRenderer: {fileID: 0}
 --- !u!114 &1848964686
 MonoBehaviour:
   m_ObjectHideFlags: 0
