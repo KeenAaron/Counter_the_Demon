@@ -27,6 +27,6 @@ public class PlayerHit : MonoBehaviour
 
     public void increaseDamage()
     {
-        ++damage;
+       damage += 0.5f;
     }
 }
