@@ -12,6 +12,7 @@ TagManager:
   - shield
   - inascapable
   - stats
+  - misil
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2287501223100315254}
   - component: {fileID: 6392760991107583881}
   - component: {fileID: 8008179087684286839}
+  - component: {fileID: 1352030375127270356}
   m_Layer: 0
   m_Name: misil
   m_TagString: Untagged
@@ -99,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   moveSpeed: 10
+  push: {fileID: 0}
 --- !u!58 &6392760991107583881
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -127,12 +129,27 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &1352030375127270356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047323970758473951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fab8412275484b4d994d70b59430e5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0.0005
+  moveTime: 0.2
+  damage: 1

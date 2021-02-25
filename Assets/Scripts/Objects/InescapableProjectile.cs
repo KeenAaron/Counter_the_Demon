@@ -9,6 +9,7 @@ public class InescapableProjectile : MonoBehaviour
     protected Rigidbody2D myRigidbody;
 
 
+
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -24,11 +25,19 @@ public class InescapableProjectile : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("shield") || other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            
+            StartCoroutine(DestroyCo());
+        }
+        if (other.gameObject.CompareTag("shield"))
+        {
             Destroy(this.gameObject);
         }
+    }
 
+    public IEnumerator DestroyCo()
+    {
+        yield return new WaitForSeconds(0.2f);
+        Destroy(this.gameObject);
     }
 }

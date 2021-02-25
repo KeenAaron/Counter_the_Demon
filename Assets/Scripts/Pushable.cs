@@ -9,61 +9,78 @@ public class Pushable : MonoBehaviour
     public float moveTime;
     public float damage;
 
-   
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("push"))
+        if (!gameObject.CompareTag("misil"))
         {
-            CircleCollider2D push = other.GetComponent<CircleCollider2D>();
-            Rigidbody2D pushable = GetComponent<Rigidbody2D>();
+            if (other.gameObject.CompareTag("push"))
+            {
+                pushOther(other);
+            }
+
+            /*if (other.CompareTag("Player")) {
+                Rigidbody2D pushable = GetComponent<Rigidbody2D>();
+                if (other.GetComponent<PlayerMovment>().currentState != PlayerState.stagger)
+                {
+                    pushable.GetComponent<PlayerMovment>().currentState = PlayerState.stagger;
+                    other.GetComponent<PlayerMovment>().KnockCo(moveTime);
+                }
+            }*/
+
+        } 
+
+        if (other.CompareTag("Player"))
+        {
+            pushPlayer(other);
+        }
+    }
+
+    public void pushOther(Collider2D other)
+    {
+        CircleCollider2D push = other.GetComponent<CircleCollider2D>();
+        Rigidbody2D pushable = GetComponent<Rigidbody2D>();
+        if (pushable != null)
+        {
+            pushable.isKinematic = false;
+            pushable.gravityScale = 0;
+            Vector2 difference = transform.position - push.transform.position;
+            difference = difference.normalized * hit;
+            pushable.AddForce(difference, ForceMode2D.Impulse);
+
+            if (pushable.CompareTag("enemy"))
+            {
+                pushable.GetComponent<Enemy>().currentState = EnemyState.stagger;
+            }
+            StartCoroutine(PushCo(pushable));
+        }
+    }
+
+    public void pushPlayer(Collider2D other)
+    {
+        Rigidbody2D pushable = other.GetComponent<Rigidbody2D>();
+        Rigidbody2D push = this.GetComponent<Rigidbody2D>();
+
+        if (other.GetComponent<PlayerMovment>().currentState != PlayerState.stagger)
+        {
             if (pushable != null)
             {
-                
                 pushable.isKinematic = false;
-                pushable.gravityScale = 0;
-                Vector2 difference = transform.position - push.transform.position;
+                Vector2 difference = pushable.transform.position - push.transform.position;
                 difference = difference.normalized * hit;
                 pushable.AddForce(difference, ForceMode2D.Impulse);
 
-                if (pushable.CompareTag("enemy")) {
-                    pushable.GetComponent<Enemy>().currentState = EnemyState.stagger;
-                }
-                
-
-                StartCoroutine(PushCo(pushable));      
-            }
-        }
-
-        /*if (other.CompareTag("Player")) {
-            Rigidbody2D pushable = GetComponent<Rigidbody2D>();
-            if (other.GetComponent<PlayerMovment>().currentState != PlayerState.stagger)
-            {
-                pushable.GetComponent<PlayerMovment>().currentState = PlayerState.stagger;
-                other.GetComponent<PlayerMovment>().KnockCo(moveTime);
-            }
-        }*/
-
-       
-        if (other.CompareTag("Player"))
-        {
-
-            Rigidbody2D pushable = other.GetComponent<Rigidbody2D>();
-            Rigidbody2D push = this.GetComponent<Rigidbody2D>();
-
-            if (other.GetComponent<PlayerMovment>().currentState != PlayerState.stagger)
-            {
-                if (pushable != null)
-                {
-                    pushable.isKinematic = false;
-                    Vector2 difference = pushable.transform.position - push.transform.position;
-                    difference = difference.normalized * hit;
-                    pushable.AddForce(difference, ForceMode2D.Impulse);
-
+                if (gameObject.CompareTag("enemy")) {
                     push.GetComponent<Enemy>().currentState = EnemyState.stagger;
-                    pushable.GetComponent<PlayerMovment>().currentState = PlayerState.stagger;
-                    other.GetComponent<PlayerMovment>().Knock(moveTime, damage);
+                }
 
-                    StartCoroutine(PushCo(pushable));
+                pushable.GetComponent<PlayerMovment>().currentState = PlayerState.stagger;
+                other.GetComponent<PlayerMovment>().Knock(moveTime, damage);
+
+                StartCoroutine(PushCo(pushable));
+
+                if (gameObject.CompareTag("enemy"))
+                {
                     StartCoroutine(PushCo(push));
                 }
             }
