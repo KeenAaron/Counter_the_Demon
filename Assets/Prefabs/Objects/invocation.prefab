@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -5564248608999137188, guid: 52d88e153b6ba844f99b726000355ddb,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -136,9 +136,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myRigidbody: {fileID: 654434887806293429}
-  nameTarget: 
   target: {fileID: 0}
   chaseRadius: 4
+  timeToDestroy: 10
   moveSpeed: 5
 --- !u!114 &286270609788645986
 MonoBehaviour:

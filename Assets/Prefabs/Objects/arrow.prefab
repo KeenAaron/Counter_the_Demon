@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1809994071
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 6465271316976419069, guid: 8091358c30e231e418bb7485353ec903,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -161,4 +161,4 @@ MonoBehaviour:
   speed: 15
   timeToDestroy: 5
   myRigidbody: {fileID: 8670635789840250462}
-  berserker: {fileID: 0}
+  enemy: {fileID: 0}

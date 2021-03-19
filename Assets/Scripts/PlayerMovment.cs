@@ -141,6 +141,7 @@ public class PlayerMovment : MonoBehaviour
         currentState = PlayerState.attack;
         yield return null;
         MakeArrow();
+        animator.SetBool("moving", false);
         yield return new WaitForSeconds(1f);
         currentState = PlayerState.walk;
     }
@@ -148,9 +149,10 @@ public class PlayerMovment : MonoBehaviour
     private IEnumerator InvocationCo()
     {
         currentState = PlayerState.attack;
-        yield return null;
+        animator.SetBool("moving", false);
+        yield return new WaitForSeconds(.75f);
         MakeInvocation();
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(1.25f);
         currentState = PlayerState.walk;
     }
 
@@ -168,6 +170,7 @@ public class PlayerMovment : MonoBehaviour
         currentState = PlayerState.attack;
         yield return null;
         MakeElectric();
+        animator.SetBool("moving", false);
         yield return new WaitForSeconds(1.5f);
         currentState = PlayerState.walk;
     }

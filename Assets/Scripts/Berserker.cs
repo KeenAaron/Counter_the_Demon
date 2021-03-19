@@ -82,8 +82,8 @@ public class Berserker : Log
         health -= damage;
         if (health <= 0)
         {
-            playerStats.increaseStats();
             Destroy(gameObject);
+            playerStats.increaseStats();
         }
     }
 
