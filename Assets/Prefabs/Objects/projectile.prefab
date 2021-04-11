@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  timeToDestroy: 1
+  timeToDestroy: 0.25
   myRigidbody: {fileID: 1440749429392184564}
 --- !u!114 &1226215122923430149
 MonoBehaviour:

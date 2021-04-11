@@ -5,18 +5,14 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     public float speed;
-    public float timeToDestroy = 5f;
+    public float timeToDestroy = 1f;
     public Rigidbody2D myRigidbody;
 
 
     // Start is called before the first frame update
     void Update()
     {
-        timeToDestroy -= Time.deltaTime;
-        if (timeToDestroy <= 0)
-        {
-            //Destroy(this.gameObject);
-        }
+        Destroy(gameObject, timeToDestroy);
     }
 
     public void Setup(Vector2 velocity, Vector3 direction)

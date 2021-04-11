@@ -24,11 +24,8 @@ public class Invocation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeToDestroy -= Time.deltaTime;
-        if (timeToDestroy <= 0)
-        {
-            Destroy(this.gameObject);
-        }
+
+        Destroy(this.gameObject, timeToDestroy);
         if (closestEnemy == null)
         {
             followPlayer();

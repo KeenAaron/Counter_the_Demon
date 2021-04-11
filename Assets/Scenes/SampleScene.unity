@@ -7521,6 +7521,7 @@ GameObject:
   - component: {fileID: 1256507201}
   - component: {fileID: 1256507200}
   - component: {fileID: 1256507202}
+  - component: {fileID: 1256507203}
   m_Layer: 0
   m_Name: guardian
   m_TagString: Untagged
@@ -7566,7 +7567,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1901112779410964758, guid: 7e4cc2d354a85bb47bc5ae41e9eedf09,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7587,7 +7588,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1256507199}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.88, y: -53.96, z: 0}
+  m_LocalPosition: {x: 30.9, y: -53.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7609,6 +7610,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2
+--- !u!114 &1256507203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256507199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47846a9694028fd42b819f1f8910b376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 8972687196084663021, guid: b6b26f44c08ff8b4998622253595a2d4, type: 3}
+  attackRadius: 4
 --- !u!1 &1330459040
 GameObject:
   m_ObjectHideFlags: 0
@@ -8066,7 +8081,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590253088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.85, y: -52.12, z: 0}
+  m_LocalPosition: {x: 27.17, y: -54.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 681619437}
