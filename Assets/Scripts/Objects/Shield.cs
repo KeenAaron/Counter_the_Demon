@@ -27,14 +27,12 @@ public class Shield : MonoBehaviour
         myRigidbody.MovePosition(temp);
     }
 
-    /*
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("inascapable"))
+        if (other.gameObject.CompareTag("inascapable") || other.gameObject.CompareTag("bullet"))
         {
             Destroy(other.gameObject);
         }
 
     }
-    */
 }

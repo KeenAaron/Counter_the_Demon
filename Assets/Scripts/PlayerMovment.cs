@@ -23,6 +23,7 @@ public class PlayerMovment : MonoBehaviour
     private Animator animator;
     private float habilityTimer;
     private bool useHability = true;
+    private bool useShield = false;
     public FloatValue currentHealth;
     public FloatValue hearthContainers;
 
@@ -94,7 +95,7 @@ public class PlayerMovment : MonoBehaviour
         }
         else if (Input.GetButtonDown("shield"))
         {
-            if (currentState != PlayerState.attack && currentState != PlayerState.push && useHability)
+            if (currentState != PlayerState.attack && currentState != PlayerState.push && useHability && useShield)
             {
                 habilityTimer = 5f;
                 useHability = false;
@@ -257,5 +258,10 @@ public class PlayerMovment : MonoBehaviour
             currentState = PlayerState.idle;
             myRigidbody.velocity = Vector2.zero;
         }
+    }
+
+    public void setUseShield()
+    {
+        useShield = true;
     }
 }

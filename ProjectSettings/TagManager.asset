@@ -13,6 +13,7 @@ TagManager:
   - inascapable
   - stats
   - misil
+  - bullet
   layers:
   - Default
   - TransparentFX
