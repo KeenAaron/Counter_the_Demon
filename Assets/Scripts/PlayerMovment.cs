@@ -24,6 +24,7 @@ public class PlayerMovment : MonoBehaviour
     private float habilityTimer;
     private bool useHability = true;
     private bool useShield = false;
+    private bool useInvocation = false;
     public FloatValue currentHealth;
     public FloatValue hearthContainers;
 
@@ -86,7 +87,7 @@ public class PlayerMovment : MonoBehaviour
         }
         else if (Input.GetButtonDown("invocation"))
         {
-            if (currentState != PlayerState.attack && currentState != PlayerState.push && useHability)
+            if (currentState != PlayerState.attack && currentState != PlayerState.push && useHability && useInvocation)
             {
                 habilityTimer = 10f;
                 useHability = false;
@@ -263,5 +264,10 @@ public class PlayerMovment : MonoBehaviour
     public void setUseShield()
     {
         useShield = true;
+    }
+
+    public void setUseInvocation()
+    {
+        useInvocation = true;
     }
 }

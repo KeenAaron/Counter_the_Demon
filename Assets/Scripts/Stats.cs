@@ -11,10 +11,12 @@ public class Stats : MonoBehaviour
     public PlayerMovment player;
     public HeartManager heart;
     public int objectives;
+    public int destroyables;
 
     private void Start()
     {
-        //objectives = 0;
+        objectives = 0;
+        destroyables = 0;
     }
 
 
@@ -54,5 +56,20 @@ public class Stats : MonoBehaviour
     public void shieldAbility()
     {
         player.setUseShield();
+    }
+
+    public int getDestroyables()
+    {
+        return destroyables;
+    }
+
+    public void setDestroyables()
+    {
+        destroyables++;
+    }
+
+    public void invocationAbility()
+    {
+        player.setUseInvocation();
     }
 }

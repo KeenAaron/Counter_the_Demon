@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class pot : MonoBehaviour
+public class Pot : MonoBehaviour
 {
 
     private Animator anim;
