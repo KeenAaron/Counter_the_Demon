@@ -25,6 +25,7 @@ public class PlayerMovment : MonoBehaviour
     private bool useHability = true;
     private bool useShield = false;
     private bool useInvocation = false;
+    public bool useShock = false;
     public FloatValue currentHealth;
     public FloatValue hearthContainers;
 
@@ -105,7 +106,7 @@ public class PlayerMovment : MonoBehaviour
         }
         else if (Input.GetButtonDown("electric"))
         {
-            if (currentState != PlayerState.attack && currentState != PlayerState.push && useHability)
+            if (currentState != PlayerState.attack && currentState != PlayerState.push && useHability && useShock)
             {
                 habilityTimer = 3f;
                 useHability = false;
@@ -269,5 +270,10 @@ public class PlayerMovment : MonoBehaviour
     public void setUseInvocation()
     {
         useInvocation = true;
+    }
+
+    public void setUseShock()
+    {
+        useShock = true;
     }
 }

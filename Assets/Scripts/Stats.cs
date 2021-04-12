@@ -12,20 +12,13 @@ public class Stats : MonoBehaviour
     public HeartManager heart;
     public int objectives;
     public int destroyables;
+    public int pushables;
 
     private void Start()
     {
         objectives = 0;
         destroyables = 0;
-    }
-
-
-    private void Update()
-    {
-        if (objectives == 3)
-        {
-            shieldAbility();
-        }
+        pushables = 0;
     }
 
     public void increaseStats()
@@ -51,11 +44,15 @@ public class Stats : MonoBehaviour
     public void setObjectives()
     {
         objectives++;
+        shieldAbility();
     }
 
     public void shieldAbility()
     {
-        player.setUseShield();
+        if (objectives == 3)
+        {
+            player.setUseShield();
+        }
     }
 
     public int getDestroyables()
@@ -71,5 +68,19 @@ public class Stats : MonoBehaviour
     public void invocationAbility()
     {
         player.setUseInvocation();
+    }
+
+    public void setPushables()
+    {
+        pushables++;
+        shockAbility();
+    }
+
+    public void shockAbility()
+    {
+        if (pushables == 3)
+        {
+            player.setUseShock();
+        }
     }
 }
