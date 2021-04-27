@@ -43,6 +43,7 @@ public class FinalBoss : Log
                 }
                 else if (trhow)
                 {
+                    trhow = false;
                     InescapableProjectile inescapableProjectile = Instantiate(misil, transform.position, Quaternion.identity).GetComponent<InescapableProjectile>();
                     timer = 5f;
                 } else if (invisible)
