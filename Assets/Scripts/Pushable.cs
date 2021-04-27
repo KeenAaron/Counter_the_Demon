@@ -78,7 +78,7 @@ public class Pushable : MonoBehaviour
                 if (gameObject.CompareTag("enemy"))
                 {
                     //Enemy enemy = push.gameObject.GetComponent <Enemy>();
-                    other.GetComponent<PlayerMovment>().Knock(moveTime, gameObject.GetComponent<Enemy>().baseAttack);
+                    //other.GetComponent<PlayerMovment>().Knock(moveTime, gameObject.GetComponent<Enemy>().baseAttack);
                 } else {
                     other.GetComponent<PlayerMovment>().Knock(moveTime, damage);
                 }
