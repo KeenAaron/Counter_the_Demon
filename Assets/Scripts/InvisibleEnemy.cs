@@ -28,7 +28,7 @@ public class InvisibleEnemy : Log
         }
     }
 
-    IEnumerator Invisble()
+    /*IEnumerator Invisble()
     {
         yield return new WaitForSeconds(10);
         GetComponent<Renderer>().enabled = false;
@@ -41,7 +41,7 @@ public class InvisibleEnemy : Log
         yield return new WaitForSeconds(10);
         GetComponent<Renderer>().enabled = true;
         invisible = true;
-    }
+    }*/
 
     public void ChangeVisibility()
     {
