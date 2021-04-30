@@ -26,8 +26,11 @@ public class EnemyInescapable : Log
         health -= damage;
         if (health <= 0)
         {
+            if (!playerStats.inescapableEnemy)
+            {
+                playerStats.increaseStats(gameObject.name);
+            }
             Destroy(gameObject);
-            playerStats.increaseStats();
         }
     }
 }

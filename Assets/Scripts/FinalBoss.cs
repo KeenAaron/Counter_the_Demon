@@ -136,7 +136,6 @@ public class FinalBoss : Log
         if (health <= 0)
         {
             Destroy(gameObject);
-            playerStats.increaseStats();
         }
     }
 

@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+    public Stats stats;
 
     // Update is called once per frame
 
@@ -43,8 +44,15 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
     }
 
+    public void Save()
+    {
+        Data data = stats.getData();
+        SaveSystem.save(data);
+    }
+
     public void LoadMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
+
 }

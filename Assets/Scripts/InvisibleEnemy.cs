@@ -60,8 +60,11 @@ public class InvisibleEnemy : Log
         health -= damage;
         if (health <= 0)
         {
+            if (!playerStats.invisibleEnemy)
+            {
+                playerStats.increaseStats(gameObject.name);
+            }
             Destroy(gameObject);
-            playerStats.increaseStats();
         }
     }
 }

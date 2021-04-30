@@ -22,10 +22,10 @@ public class PlayerMovment : MonoBehaviour
     private Vector3 change;
     private Animator animator;
     private float habilityTimer;
-    private bool useHability = true;
-    private bool useShield = false;
-    private bool useInvocation = false;
-    public bool useShock = false;
+    private bool useHability;
+    private bool useShield;
+    private bool useInvocation;
+    public bool useShock;
     public FloatValue currentHealth;
     public FloatValue hearthContainers;
 
@@ -48,6 +48,10 @@ public class PlayerMovment : MonoBehaviour
         animator.SetFloat("moveY", -1);
 
         pushCollider = transform.GetChild(0).GetComponent<CircleCollider2D>();
+        useHability = true;
+        useShield = false;
+        useInvocation = false;
+        useShock = false;
     }
 
     // Update is called once per frame

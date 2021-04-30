@@ -51,8 +51,6 @@ public class Invocation : MonoBehaviour
                 CheckDistance();
             }
         }
-
-        Debug.DrawLine(this.transform.position, closestEnemy.transform.position);
     }
 
     public void CheckDistance()
