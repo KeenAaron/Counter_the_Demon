@@ -25,18 +25,18 @@ public class FloatValue : ScriptableObject, ISerializationCallbackReceiver
         this.maxHearths = this.initialValue;
     }
 
-    public void setHeartContainer()
+    public void setHeartContainer(float sumHearths)
     {
         //++this.initialValue;
-        ++this.maxHearths;
+        this.maxHearths += sumHearths;
 
         //this.RuntimeValue = this.RuntimeValue + (this.maxValue - this.initialValue);
         this.RuntimeValue = this.maxHearths;
     }
 
-    public void setPlayerHealth()
+    public void setPlayerHealth(float sumHearths)
     {
-        this.maxHearths += 2;
+        this.maxHearths += sumHearths;
         //this.initialValue += 2;
         //this.RuntimeValue = this.RuntimeValue + (this.maxValue - this.initialValue); 
 

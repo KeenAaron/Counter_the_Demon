@@ -35,8 +35,8 @@ public class Stats : MonoBehaviour
         hitRight.increaseDamage();
         hitDown.increaseDamage();
         player.increaseSpeed();
-        player.hearthContainers.setHeartContainer();
-        player.currentHealth.setPlayerHealth();
+        player.hearthContainers.setHeartContainer(1);
+        player.currentHealth.setPlayerHealth(2);
         heart.InitHearts();
         heart.UpdateHearts();
 
@@ -125,7 +125,8 @@ public class Stats : MonoBehaviour
         hitLeft.damage = data.damage;
         hitRight.damage = data.damage;
         hitDown.damage = data.damage;
-        player.hearthContainers.maxHearths = data.maxHearths;
+        player.hearthContainers.setHeartContainer(data.maxHearths/2 - 3);
+        player.currentHealth.setPlayerHealth(data.maxHearths - 6);
         player.currentHealth.RuntimeValue = data.actualHearths;
         puzzle1 = data.puzzle1;
         puzzle2 = data.puzzle2;
@@ -204,7 +205,7 @@ public class Data
         position[1] = stats.player.transform.position.y;
         speed = stats.player.speed;
         damage = stats.hitUp.damage;
-        maxHearths = stats.player.hearthContainers.maxHearths;
+        maxHearths = stats.player.currentHealth.maxHearths;
         actualHearths = stats.player.currentHealth.RuntimeValue;
         puzzle1 = stats.puzzle1;
         puzzle2 = stats.puzzle2;
