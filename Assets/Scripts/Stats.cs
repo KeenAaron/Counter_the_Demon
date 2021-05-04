@@ -20,7 +20,15 @@ public class Stats : MonoBehaviour
     public bool invisibleEnemy;
     public bool inescapableEnemy;
 
-    public void increaseStats(string enemy)
+    void Start()
+    {
+        if (PlayerPrefs.GetInt("continue") == 1)
+        {
+            loadData();
+        }
+    }
+
+        public void increaseStats(string enemy)
     {
         hitUp.increaseDamage();
         hitLeft.increaseDamage();
@@ -104,7 +112,70 @@ public class Stats : MonoBehaviour
     {
         Data data = new Data(this);
         return data;
+    }
 
+    public void loadData()
+    {
+        Data data = new Data(this);
+        JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString("data"), data);
+        
+        player.transform.position = new Vector3(data.position[0], data.position[1], 0);
+        player.speed = data.speed;
+        hitUp.damage = data.damage;
+        hitLeft.damage = data.damage;
+        hitRight.damage = data.damage;
+        hitDown.damage = data.damage;
+        player.hearthContainers.maxHearths = data.maxHearths;
+        player.currentHealth.RuntimeValue = data.actualHearths;
+        puzzle1 = data.puzzle1;
+        puzzle2 = data.puzzle2;
+        puzzle3 = data.puzzle3;
+        berserkerEnemy = data.berserkerEnemy;
+        invisibleEnemy = data.invisibleEnemy;
+        inescapableEnemy = data.inescapableEnemy;
+
+        if (puzzle1)
+        {
+            GameObject Puzzle1 = GameObject.Find("Puzzle1");
+            Destroy(Puzzle1.transform.GetChild(0).gameObject);
+            Destroy(Puzzle1.transform.GetChild(1).gameObject);
+            Destroy(Puzzle1.transform.GetChild(2).gameObject);
+
+            player.setUseShield();
+        }
+        if (puzzle2)
+        {
+            GameObject Puzzle2 = GameObject.Find("Puzzle2");
+            Destroy(Puzzle2.transform.GetChild(0).gameObject);
+            Destroy(Puzzle2.transform.GetChild(1).gameObject);
+            Destroy(Puzzle2.transform.GetChild(2).gameObject);
+
+            player.setUseInvocation();
+        }
+        if (puzzle3)
+        {
+            player.setUseShock();
+            Debug.Log("1");
+            GameObject Puzzle3 = GameObject.Find("Puzzle3");
+            Destroy(Puzzle3.transform.GetChild(0).gameObject);
+            Destroy(Puzzle3.transform.GetChild(1).gameObject);
+            Destroy(Puzzle3.transform.GetChild(2).gameObject);
+            Destroy(Puzzle3.transform.GetChild(3).gameObject);
+            Destroy(Puzzle3.transform.GetChild(4).gameObject);
+            Destroy(Puzzle3.transform.GetChild(5).gameObject);            
+        }
+        if (berserkerEnemy)
+        {
+            Destroy(GameObject.Find("Berserker"));
+        }
+        if (invisibleEnemy)
+        {
+            Destroy(GameObject.Find("Invisible"));
+        }
+        if (inescapableEnemy)
+        {
+            Destroy(GameObject.Find("EnemyInescapable"));
+        }
     }
 }
 

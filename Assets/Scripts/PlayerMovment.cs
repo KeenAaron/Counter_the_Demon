@@ -17,15 +17,15 @@ public enum PlayerState
 public class PlayerMovment : MonoBehaviour
 {
     public PlayerState currentState; //lestat en el que es troba el player
+    public bool useShield;
+    public bool useInvocation;
+    public bool useShock;
     public float speed;
     private Rigidbody2D myRigidbody;
     private Vector3 change;
     private Animator animator;
     private float habilityTimer;
     private bool useHability;
-    private bool useShield;
-    private bool useInvocation;
-    public bool useShock;
     public FloatValue currentHealth;
     public FloatValue hearthContainers;
 
@@ -49,9 +49,9 @@ public class PlayerMovment : MonoBehaviour
 
         pushCollider = transform.GetChild(0).GetComponent<CircleCollider2D>();
         useHability = true;
-        useShield = false;
+        /*useShield = false;
         useInvocation = false;
-        useShock = false;
+        useShock = false;*/
     }
 
     // Update is called once per frame
@@ -278,6 +278,8 @@ public class PlayerMovment : MonoBehaviour
 
     public void setUseShock()
     {
+        Debug.Log("2");
         useShock = true;
+        Debug.Log("3");
     }
 }
