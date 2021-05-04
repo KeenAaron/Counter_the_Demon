@@ -29,18 +29,30 @@ public class PlayerMovment : MonoBehaviour
     public FloatValue currentHealth;
     public FloatValue hearthContainers;
 
-    public SignalSender playerHealthSignal;
+    //public SignalSender playerHealthSignal;
 
     public GameObject projectile;
     public GameObject invocation;
     public GameObject shield;
     public GameObject electric;
+    public GameObject heartManager;
 
 
     private CircleCollider2D pushCollider;
 
+    
+/*
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite halfFullHeart;
+    public Sprite emptyHeart;
+    public FloatValue heartContainers;
+    public FloatValue playerCurrentHealth;
+    */
+
     void Start()
     {
+        //InitHearts();
         currentState = PlayerState.walk; //cambia l'estat a caminar
         animator = GetComponent<Animator>(); //crida a animator per actualitzar la animacio
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -121,6 +133,26 @@ public class PlayerMovment : MonoBehaviour
         {
             UpdateAnimationAndMove();
         }
+
+/*
+        float tempHealth = playerCurrentHealth.RuntimeValue / 2;
+        for (int i = 0; i < heartContainers.RuntimeValue; i++)
+        {
+            if (i <= tempHealth - 1)
+            {
+                //Full heart
+                hearts[i].sprite = fullHeart;
+            } else if ( i >= tempHealth)
+            {
+                //empty
+                hearts[i].sprite = emptyHeart;
+            } else 
+            {
+                //half full heart
+                hearts[i].sprite = halfFullHeart;
+            }
+        }
+        */
     }
 
     private IEnumerator AttackCo()
@@ -248,7 +280,7 @@ public class PlayerMovment : MonoBehaviour
 
         if (currentHealth.RuntimeValue > 0)
         {
-            playerHealthSignal.Raise();
+            heartManager.GetComponent<HeartManager>().UpdateHearts();
             StartCoroutine(KnockCo(moveTime, damage));
         } else {
             this.gameObject.SetActive(false);
@@ -278,8 +310,17 @@ public class PlayerMovment : MonoBehaviour
 
     public void setUseShock()
     {
-        Debug.Log("2");
         useShock = true;
-        Debug.Log("3");
     }
+
+/*
+    public void InitHearts()
+    {
+        for (int i = 0; i < Mathf.Min(hearts.Length, heartContainers.RuntimeValue); i++)
+        {
+            hearts[i].gameObject.SetActive(true);
+            hearts[i].sprite = fullHeart;
+        }
+    }
+    */
 }

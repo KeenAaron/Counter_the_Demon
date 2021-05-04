@@ -154,15 +154,15 @@ public class Stats : MonoBehaviour
         }
         if (puzzle3)
         {
-            player.setUseShock();
-            Debug.Log("1");
             GameObject Puzzle3 = GameObject.Find("Puzzle3");
             Destroy(Puzzle3.transform.GetChild(0).gameObject);
             Destroy(Puzzle3.transform.GetChild(1).gameObject);
             Destroy(Puzzle3.transform.GetChild(2).gameObject);
             Destroy(Puzzle3.transform.GetChild(3).gameObject);
             Destroy(Puzzle3.transform.GetChild(4).gameObject);
-            Destroy(Puzzle3.transform.GetChild(5).gameObject);            
+            Destroy(Puzzle3.transform.GetChild(5).gameObject);
+
+            player.setUseShock();
         }
         if (berserkerEnemy)
         {
