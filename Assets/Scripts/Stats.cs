@@ -28,7 +28,7 @@ public class Stats : MonoBehaviour
         }
     }
 
-        public void increaseStats(string enemy)
+    public void increaseStats(string enemy)
     {
         hitUp.increaseDamage();
         hitLeft.increaseDamage();
@@ -180,7 +180,6 @@ public class Stats : MonoBehaviour
     }
 }
 
-
 public class Data
 {
     public float[] position;
@@ -188,9 +187,6 @@ public class Data
     public float damage;
     public float maxHearths;
     public float actualHearths;
-    //public bool useShield;
-    //public bool useInvocation;
-    //public bool useShock;
     public bool puzzle1;
     public bool puzzle2;
     public bool puzzle3;

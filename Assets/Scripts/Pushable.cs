@@ -18,16 +18,6 @@ public class Pushable : MonoBehaviour
             {
                 pushOther(other);
             }
-
-            /*if (other.CompareTag("Player")) {
-                Rigidbody2D pushable = GetComponent<Rigidbody2D>();
-                if (other.GetComponent<PlayerMovment>().currentState != PlayerState.stagger)
-                {
-                    pushable.GetComponent<PlayerMovment>().currentState = PlayerState.stagger;
-                    other.GetComponent<PlayerMovment>().KnockCo(moveTime);
-                }
-            }*/
-
         } 
 
         if (other.CompareTag("Player"))

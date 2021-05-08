@@ -6,28 +6,40 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     // Start is called before the first frame update
-    public static bool GameIsPaused = false;
+ 
+    public static bool GameIsPaused;
     public GameObject pauseMenuUI;
     public Stats stats;
-
     // Update is called once per frame
 
-    /*private void Start()
+    private void Start()
     {
-        Resume();
-    }*/
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+
+        if (PlayerPrefs.GetInt("continue") == 1)
+        {
+            Resume();
+        }
+    }
 
     void Update()
-    {
+    {        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GameIsPaused)
-            {
-                Resume();
-            } else
-            {
-                Pause();
-            }
+            MageMenu();
+        }
+    }
+
+    public void MageMenu()
+    {
+        if (GameIsPaused)
+        {
+            Resume();
+        }
+        else
+        {
+            Pause();
         }
     }
 
@@ -47,12 +59,11 @@ public class PauseMenu : MonoBehaviour
     public void Save()
     {
         Data data = stats.getData();
-        SaveSystem.save(data);
+        SaveSystem.Save(data);
     }
 
     public void LoadMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
-
 }

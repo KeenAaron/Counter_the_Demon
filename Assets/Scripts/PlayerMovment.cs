@@ -37,7 +37,6 @@ public class PlayerMovment : MonoBehaviour
     public GameObject electric;
     public GameObject heartManager;
 
-
     private CircleCollider2D pushCollider;
 
     
@@ -52,7 +51,6 @@ public class PlayerMovment : MonoBehaviour
 
     void Start()
     {
-        //InitHearts();
         currentState = PlayerState.walk; //cambia l'estat a caminar
         animator = GetComponent<Animator>(); //crida a animator per actualitzar la animacio
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -61,9 +59,6 @@ public class PlayerMovment : MonoBehaviour
 
         pushCollider = transform.GetChild(0).GetComponent<CircleCollider2D>();
         useHability = true;
-        /*useShield = false;
-        useInvocation = false;
-        useShock = false;*/
     }
 
     // Update is called once per frame
@@ -129,30 +124,11 @@ public class PlayerMovment : MonoBehaviour
                 StartCoroutine(ElectricCo());
             }
         }
+
         else if (currentState == PlayerState.walk)
         {
             UpdateAnimationAndMove();
         }
-
-/*
-        float tempHealth = playerCurrentHealth.RuntimeValue / 2;
-        for (int i = 0; i < heartContainers.RuntimeValue; i++)
-        {
-            if (i <= tempHealth - 1)
-            {
-                //Full heart
-                hearts[i].sprite = fullHeart;
-            } else if ( i >= tempHealth)
-            {
-                //empty
-                hearts[i].sprite = emptyHeart;
-            } else 
-            {
-                //half full heart
-                hearts[i].sprite = halfFullHeart;
-            }
-        }
-        */
     }
 
     private IEnumerator AttackCo()
@@ -221,7 +197,6 @@ public class PlayerMovment : MonoBehaviour
         arrow.Setup(temp, ChooseArrowDirectrion());
     }
 
-
     private void MakeInvocation()
     {
         Invocation invoc = Instantiate(invocation, transform.position, Quaternion.identity).GetComponent<Invocation>();
@@ -281,13 +256,13 @@ public class PlayerMovment : MonoBehaviour
         if (currentHealth.RuntimeValue > 0)
         {
             heartManager.GetComponent<HeartManager>().UpdateHearts();
-            StartCoroutine(KnockCo(moveTime, damage));
+            StartCoroutine(KnockCo(moveTime));
         } else {
             this.gameObject.SetActive(false);
         }
     }
 
-    public IEnumerator KnockCo(float moveTime, float damage)
+    public IEnumerator KnockCo(float moveTime)
     {
         if(myRigidbody != null)
         {
@@ -312,15 +287,4 @@ public class PlayerMovment : MonoBehaviour
     {
         useShock = true;
     }
-
-/*
-    public void InitHearts()
-    {
-        for (int i = 0; i < Mathf.Min(hearts.Length, heartContainers.RuntimeValue); i++)
-        {
-            hearts[i].gameObject.SetActive(true);
-            hearts[i].sprite = fullHeart;
-        }
-    }
-    */
 }

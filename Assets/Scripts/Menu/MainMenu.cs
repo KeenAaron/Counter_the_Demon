@@ -21,7 +21,7 @@ public class MainMenu : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("data"))
         {
-            SaveSystem.load();
+            SaveSystem.Load();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         } else
         {

@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class SaveSystem
 {
-    public static void save(Data data)
+    public static void Save(Data data)
     {
         PlayerPrefs.SetString("data", JsonUtility.ToJson(data));
     }
-    public static void load()
+    public static void Load()
     {
-        /*JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString("data"), data);
-        Debug.Log(JsonUtility.ToJson(data));*/
         PlayerPrefs.SetInt("continue", 1);
     }
 }
