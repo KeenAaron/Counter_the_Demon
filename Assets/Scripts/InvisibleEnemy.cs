@@ -26,6 +26,13 @@ public class InvisibleEnemy : Log
                 timer = 10f;
             }
         }
+        if (currentState == EnemyState.attack || currentState == EnemyState.walk)
+        {
+            
+            GameObject.Find("InvisibleWall").GetComponent<BoxCollider2D>().enabled = true;
+            GameObject.Find("InvisibleWall").GetComponent<SpriteRenderer>().enabled = true;
+
+        }
     }
 
     /*IEnumerator Invisble()
@@ -63,6 +70,9 @@ public class InvisibleEnemy : Log
             if (!playerStats.invisibleEnemy)
             {
                 playerStats.increaseStats(gameObject.name);
+                GameObject.Find("InvisibleWall").GetComponent<BoxCollider2D>().enabled = false;
+                GameObject.Find("InvisibleWall").GetComponent<SpriteRenderer>().enabled = false;
+
             }
             Destroy(gameObject);
         }

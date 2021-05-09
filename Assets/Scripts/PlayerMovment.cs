@@ -28,6 +28,7 @@ public class PlayerMovment : MonoBehaviour
     private bool useHability;
     public FloatValue currentHealth;
     public FloatValue hearthContainers;
+    public GameObject gameOverUI;
 
     //public SignalSender playerHealthSignal;
 
@@ -253,12 +254,14 @@ public class PlayerMovment : MonoBehaviour
     {
         currentHealth.RuntimeValue -= damage;
 
-        if (currentHealth.RuntimeValue > 0)
+        heartManager.GetComponent<HeartManager>().UpdateHearts();
+        StartCoroutine(KnockCo(moveTime));
+
+        if (currentHealth.RuntimeValue <= 0)
         {
-            heartManager.GetComponent<HeartManager>().UpdateHearts();
-            StartCoroutine(KnockCo(moveTime));
-        } else {
-            this.gameObject.SetActive(false);
+            GetComponent<Renderer>().enabled = false;
+            gameOverUI.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 

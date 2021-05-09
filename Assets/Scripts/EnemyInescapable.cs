@@ -18,6 +18,8 @@ public class EnemyInescapable : Log
                 InescapableProjectile inescapableProjectile = Instantiate(misil, transform.position, Quaternion.identity).GetComponent<InescapableProjectile>();
                 timer = 5f;
             }
+            GameObject.Find("InescapableWall").GetComponent<BoxCollider2D>().enabled = true;
+            GameObject.Find("InescapableWall").GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 
@@ -29,6 +31,8 @@ public class EnemyInescapable : Log
             if (!playerStats.inescapableEnemy)
             {
                 playerStats.increaseStats(gameObject.name);
+                GameObject.Find("InescapableWall").GetComponent<BoxCollider2D>().enabled = false;
+                GameObject.Find("InescapableWall").GetComponent<SpriteRenderer>().enabled = false;
             }
             Destroy(gameObject);
         }

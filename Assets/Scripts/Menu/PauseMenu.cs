@@ -17,21 +17,18 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
 
-        if (PlayerPrefs.GetInt("continue") == 1)
-        {
-            Resume();
-        }
+        Resume();
     }
 
     void Update()
     {        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            MageMenu();
+            ManageMenu();
         }
     }
 
-    public void MageMenu()
+    private void ManageMenu()
     {
         if (GameIsPaused)
         {

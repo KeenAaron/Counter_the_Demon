@@ -21,6 +21,7 @@ public class FinalBoss : Log
         anim = GetComponent<Animator>();
         //video 18
         target = GameObject.FindWithTag("Player").transform;
+
         invisible = false;
         berserker = false;
         trhow = false;
@@ -56,6 +57,7 @@ public class FinalBoss : Log
                 }
                 randomState();
             }
+            GameObject.Find("FinalBossWall").GetComponent<BoxCollider2D>().enabled = true;
         }
     }
 
@@ -136,6 +138,7 @@ public class FinalBoss : Log
         if (health <= 0)
         {
             Destroy(gameObject);
+            GameObject.Find("FinalBossWall").GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 

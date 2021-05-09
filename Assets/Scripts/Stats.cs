@@ -52,6 +52,10 @@ public class Stats : MonoBehaviour
                 inescapableEnemy = true;
                 break;
         }
+        if(berserkerEnemy && invisibleEnemy && inescapableEnemy){
+            GameObject.Find("EnableFinalBoss").GetComponent<BoxCollider2D>().enabled = false;
+            GameObject.Find("EnableFinalBoss").GetComponent<SpriteRenderer>().enabled = false;
+        }
     }
 
     public void recoverHealth()
@@ -176,6 +180,10 @@ public class Stats : MonoBehaviour
         if (inescapableEnemy)
         {
             Destroy(GameObject.Find("EnemyInescapable"));
+        }
+        if(berserkerEnemy && invisibleEnemy && inescapableEnemy){
+            GameObject.Find("EnableFinalBoss").GetComponent<BoxCollider2D>().enabled = false;
+            GameObject.Find("EnableFinalBoss").GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 }

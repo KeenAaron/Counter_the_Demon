@@ -38,6 +38,13 @@ public class BerserkerEnemy : Log
                 timer = 10f;
             }
         }
+        if (currentState == EnemyState.attack || currentState == EnemyState.walk)
+        {
+
+            GameObject.Find("BerserkerWall").GetComponent<BoxCollider2D>().enabled = true;
+            GameObject.Find("BerserkerWall").GetComponent<SpriteRenderer>().enabled = true;
+
+        }
     }
 
     public void ChangeStat()
@@ -82,6 +89,9 @@ public class BerserkerEnemy : Log
             if (!playerStats.berserkerEnemy)
             {
                 playerStats.increaseStats(gameObject.name);
+                GameObject.Find("BerserkerWall").GetComponent<BoxCollider2D>().enabled = false;
+                GameObject.Find("BerserkerWall").GetComponent<SpriteRenderer>().enabled = false;
+
             }
             Destroy(gameObject);
         }
