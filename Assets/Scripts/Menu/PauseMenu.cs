@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
  
     public static bool GameIsPaused;
     public GameObject pauseMenuUI;
+    public GameObject victoryUI;
     public Stats stats;
     // Update is called once per frame
 
@@ -46,6 +47,13 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
+
+    public void Continue()
+    {
+        victoryUI.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
     void Pause()
     {
         pauseMenuUI.SetActive(true);

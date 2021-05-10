@@ -19,6 +19,7 @@ public class Stats : MonoBehaviour
     public bool berserkerEnemy;
     public bool invisibleEnemy;
     public bool inescapableEnemy;
+    public bool gameCleared;
 
     void Start()
     {
@@ -138,6 +139,7 @@ public class Stats : MonoBehaviour
         berserkerEnemy = data.berserkerEnemy;
         invisibleEnemy = data.invisibleEnemy;
         inescapableEnemy = data.inescapableEnemy;
+        gameCleared = data.gameCleared;
 
         if (puzzle1)
         {
@@ -181,9 +183,13 @@ public class Stats : MonoBehaviour
         {
             Destroy(GameObject.Find("EnemyInescapable"));
         }
-        if(berserkerEnemy && invisibleEnemy && inescapableEnemy){
+        if (berserkerEnemy && invisibleEnemy && inescapableEnemy){
             GameObject.Find("EnableFinalBoss").GetComponent<BoxCollider2D>().enabled = false;
             GameObject.Find("EnableFinalBoss").GetComponent<SpriteRenderer>().enabled = false;
+        }
+        if (gameCleared)
+        {
+            Destroy(GameObject.Find("FinalBoss"));
         }
     }
 }
@@ -201,6 +207,7 @@ public class Data
     public bool berserkerEnemy;
     public bool invisibleEnemy;
     public bool inescapableEnemy;
+    public bool gameCleared;
 
     public Data (Stats stats)
     {
@@ -217,6 +224,6 @@ public class Data
         berserkerEnemy = stats.berserkerEnemy;
         invisibleEnemy = stats.invisibleEnemy;
         inescapableEnemy = stats.inescapableEnemy;
-
+        gameCleared = stats.gameCleared;
     }
 }

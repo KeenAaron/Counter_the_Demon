@@ -13,6 +13,7 @@ public class FinalBoss : Log
     public SpriteRenderer spriteRenderer;
     public GameObject misil;
     public Stats playerStats;
+    public GameObject victoryUI;
     protected override void Start()
     {
         spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
@@ -137,8 +138,12 @@ public class FinalBoss : Log
         health -= damage;
         if (health <= 0)
         {
-            Destroy(gameObject);
             GameObject.Find("FinalBossWall").GetComponent<BoxCollider2D>().enabled = false;
+            playerStats.gameCleared = true;
+            GetComponent<Renderer>().enabled = false;
+            victoryUI.SetActive(true);
+            Time.timeScale = 0f;
+            Destroy(gameObject);
         }
     }
 

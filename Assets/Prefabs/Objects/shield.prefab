@@ -165,6 +165,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myRigidbody: {fileID: 1243545887167147255}
-  timeToDestroy: 1
+  timeToDestroy: 2
   target: {fileID: 0}
   moveSpeed: 20
